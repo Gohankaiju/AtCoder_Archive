@@ -8,22 +8,24 @@ b.sort(reverse=True)
 
 amasa = 0
 syopa = 0
+amasa_min = 0
+syopa_min = 0
+
+print(n, x, y, a, b)
 
 for i in range(n):
-    menu = a[i]
-    amasa += menu
+    amasa += a[i]
+    amasa_min += 1
     if amasa > x:
-        amasa = i+1
         break
 
 for j in range(n):
-    menu = b[i]
-    syopa += menu
+    syopa += b[i]
+    syopa_min += 1
     if syopa > y:
-        syopa = i+1
         break
 
-print(min(amasa, syopa))
+print(min(amasa_min, syopa_min))
 
 
 
