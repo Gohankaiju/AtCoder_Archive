@@ -1,31 +1,26 @@
 n, x, y = map(int, input().split())
-a = list(map(int, input().split()))
-b = list(map(int, input().split()))
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
 
-a.sort(reverse=True)
-b.sort(reverse=True)
-
-
-amasa = 0
-syopa = 0
-amasa_min = 0
-syopa_min = 0
-
-print(n, x, y, a, b)
-
-for i in range(n):
-    amasa += a[i]
-    amasa_min += 1
-    if amasa > x:
+A.sort(reverse=True)    
+B.sort(reverse=True)
+tmp = 0
+max_a = n
+max_b = n
+for i, a in enumerate(A):
+    if tmp + a > x:
+        max_a = i+1
         break
+    tmp += a
 
-for j in range(n):
-    syopa += b[i]
-    syopa_min += 1
-    if syopa > y:
+tmp = 0
+for i, b in enumerate(B):
+    if tmp + b > y:
+        max_b = i+1
         break
+    tmp += b
 
-print(min(amasa_min, syopa_min))
+print(min(max_a, max_b))
 
 
 
