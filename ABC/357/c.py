@@ -1,35 +1,20 @@
-from collections import defaultdict
-
 n = int(input())
-x = 3**n
-s = [["#"] *3*n for _ in range(3*n)]
-print(s)
-print(0%1)
 
-def split(i, j, temp, s):
-    grid = temp // 3
-    if grid == 0:
-        pass
-    else:
-        print(f"grid={grid}")
-        for k in range(temp):
-            for l in range(temp):
-                if k%grid == 1 and l%grid == 1:
-                    s[i+k][j+l] = "."
-                else:
-                    s[i+k][j+l] = "#"
-    return s
+def f(n):
+    if n == 0:
+        return ["#"]
+    sub = f(n-1)
+    l = len(sub)
+    ret = [["." for j in range(3*l)] for i in range(3*l)]
+    for I in range(3):
+        for J in range(3):
+            if I != 1 or J != 1:
+                for i in range(l):
+                    for j in range(l):
+                        ret[I*l+i][J*l+j] = sub[i][j]
+    return ret
 
 
-temp = x
-while temp >= 3:
-    temp = temp // 3
-    print(f"temp={temp}")
-    for i in range(3):
-        for j in range(3):
-            s = split(i*temp, j*temp, temp, s)
-    
-
-print(s)
-
+for g in f(n):
+    print("".join(g))
 
